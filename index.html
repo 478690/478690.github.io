@@ -27,8 +27,8 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="欢迎来到我的博客              * {             margin: 0;             padding: 0;             box-sizing: border-box;         }          body {             font-family: &#39;Segoe UI&#39;, Tahoma, Gen">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-11-27T11:59:04.933Z">
-<meta property="article:modified_time" content="2025-11-27T11:59:04.933Z">
+<meta property="article:published_time" content="2025-11-27T12:03:06.235Z">
+<meta property="article:modified_time" content="2025-11-27T12:03:06.235Z">
 <meta property="article:author" content="江凡非">
 <meta property="article:tag" content="博客,技术分享,前端开发">
 <meta name="twitter:card" content="summary">
@@ -123,7 +123,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">👋 欢迎</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">🔬 欢迎</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -196,105 +196,184 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
             height: 100vh;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
-        /* 粒子背景 */
+        /* 科技感网格背景 */
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+
+        /* 粒子效果 */
         .particles {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: 2;
         }
 
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.8);
+            width: 2px;
+            height: 2px;
+            background: #00ffff;
             border-radius: 50%;
-            animation: float 6s infinite ease-in-out;
+            animation: particleFloat 8s infinite ease-in-out;
+            box-shadow: 0 0 10px #00ffff;
         }
 
-        @keyframes float {
+        @keyframes particleFloat {
             0%, 100% {
-                transform: translateY(0px) rotate(0deg);
+                transform: translateY(0px) translateX(0px);
                 opacity: 0.8;
             }
+            25% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0.4;
+            }
             50% {
-                transform: translateY(-100px) rotate(180deg);
-                opacity: 0.3;
+                transform: translateY(-50px) translateX(-50px);
+                opacity: 0.6;
+            }
+            75% {
+                transform: translateY(-150px) translateX(100px);
+                opacity: 0.2;
+            }
+        }
+
+        /* 发光圆环 */
+        .glow-ring {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: ringRotate 10s linear infinite;
+            z-index: 3;
+            box-shadow: 
+                0 0 20px rgba(0, 255, 255, 0.5),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+
+        .glow-ring:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            animation-duration: 15s;
+            animation-direction: reverse;
+            opacity: 0.7;
+        }
+
+        .glow-ring:nth-child(3) {
+            width: 500px;
+            height: 500px;
+            animation-duration: 20s;
+            opacity: 0.5;
+        }
+
+        @keyframes ringRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
             }
         }
 
         /* 欢迎容器 */
         .welcome-container {
             text-align: center;
-            z-index: 2;
-            animation: fadeInUp 1.5s ease-out;
+            z-index: 4;
+            animation: fadeInUp 2s ease-out;
+            position: relative;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(100px) scale(0.8);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         /* 标题 */
         .welcome-title {
-            font-size: 4rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            animation: pulse 2s infinite;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #00ffff;
+            margin-bottom: 2rem;
+            text-shadow: 
+                0 0 10px #00ffff,
+                0 0 20px #00ffff,
+                0 0 30px #00ffff;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            letter-spacing: 2px;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
+        @keyframes titleGlow {
+            from {
+                text-shadow: 
+                    0 0 10px #00ffff,
+                    0 0 20px #00ffff,
+                    0 0 30px #00ffff;
             }
-            50% {
-                transform: scale(1.05);
+            to {
+                text-shadow: 
+                    0 0 20px #00ffff,
+                    0 0 40px #00ffff,
+                    0 0 60px #00ffff;
             }
-        }
-
-        /* 副标题 */
-        .welcome-subtitle {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 3rem;
-            font-weight: 300;
         }
 
         /* 进入按钮 */
         .enter-btn {
             display: inline-block;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #667eea;
-            background: white;
+            padding: 18px 45px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0f0f23;
+            background: linear-gradient(135deg, #00ffff 0%, #00aaff 100%);
             border: none;
             border-radius: 50px;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 
+                0 8px 30px rgba(0, 255, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
             position: relative;
             overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .enter-btn::before {
@@ -304,46 +383,55 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
             transition: left 0.5s;
         }
 
         .enter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-            color: #764ba2;
+            transform: translateY(-5px);
+            box-shadow: 
+                0 15px 50px rgba(0, 255, 255, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, #00aaff 0%, #00ffff 100%);
         }
 
         .enter-btn:hover::before {
             left: 100%;
         }
 
-        /* 社交图标 */
-        .social-icons {
-            margin-top: 3rem;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .enter-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 5px 20px rgba(0, 255, 255, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+        /* 扫描线效果 */
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(0, 255, 255, 0.1) 50%,
+                transparent 100%
+            );
+            background-size: 100% 4px;
+            animation: scanMove 3s linear infinite;
+            z-index: 5;
+            pointer-events: none;
         }
 
-        .social-icon:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-5px) scale(1.1);
+        @keyframes scanMove {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100%);
+            }
         }
 
         /* 响应式设计 */
@@ -352,81 +440,65 @@
                 font-size: 2.5rem;
             }
             
-            .welcome-subtitle {
-                font-size: 1.2rem;
+            .enter-btn {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
+            
+            .glow-ring {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .glow-ring:nth-child(2) {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .glow-ring:nth-child(3) {
+                width: 360px;
+                height: 360px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-title {
+                font-size: 2rem;
             }
             
             .enter-btn {
                 padding: 12px 30px;
                 font-size: 1rem;
             }
-            
-            .social-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-        }
-
-        /* 装饰元素 */
-        .decor {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            filter: blur(50px);
-            animation: float 8s infinite ease-in-out;
-        }
-
-        .decor-1 {
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .decor-2 {
-            bottom: 15%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-
-        .decor-3 {
-            top: 50%;
-            right: 10%;
-            animation-delay: 4s;
         }
     </style>
 </head>
 <body>
-    <!-- 装饰元素 -->
-    <div class="decor decor-1"></div>
-    <div class="decor decor-2"></div>
-    <div class="decor decor-3"></div>
-
-    <!-- 粒子背景 -->
+    <!-- 科技感网格背景 -->
+    <div class="grid-bg"></div>
+    
+    <!-- 粒子效果 -->
     <div class="particles" id="particles"></div>
-
+    
+    <!-- 发光圆环 -->
+    <div class="glow-ring"></div>
+    <div class="glow-ring"></div>
+    <div class="glow-ring"></div>
+    
+    <!-- 扫描线效果 -->
+    <div class="scan-line"></div>
+    
     <!-- 欢迎容器 -->
     <div class="welcome-container">
-        <h1 class="welcome-title">👋 欢迎</h1>
-        <p class="welcome-subtitle">探索我的技术世界</p>
+        <h1 class="welcome-title">🔬 欢迎</h1>
         <a href="/blog" class="enter-btn">进入博客</a>
-        
-        <!-- 社交图标 -->
-        <div class="social-icons">
-            <a href="https://github.com" class="social-icon" target="_blank">🐱</a>
-            <a href="https://twitter.com" class="social-icon" target="_blank">🐦</a>
-            <a href="https://linkedin.com" class="social-icon" target="_blank">💼</a>
-            <a href="mailto:email@example.com" class="social-icon">📧</a>
-        </div>
     </div>
 
     <script>
         // 创建粒子效果
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+            const particleCount = 80;
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -436,14 +508,14 @@
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
                 
+                // 随机动画延迟和持续时间
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 6 + 8) + 's';
+                
                 // 随机大小
-                const size = Math.random() * 4 + 2;
+                const size = Math.random() * 3 + 1;
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
-                
-                // 随机动画延迟和持续时间
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
                 
                 particlesContainer.appendChild(particle);
             }
@@ -454,7 +526,6 @@
 
         // 点击进入博客
         document.querySelector('.enter-btn').addEventListener('click', function(e) {
-            // 直接跳转，不使用动画效果
             const targetUrl = this.getAttribute('href');
             window.location.href = targetUrl;
         });
